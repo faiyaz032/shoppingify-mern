@@ -1,6 +1,7 @@
 //dependencies
 
 //internal imports
+const User = require('../models/User');
 const catchAsync = require('../utils/catchAsync');
 
 const signup = catchAsync(async (req, res, next) => {
