@@ -3,7 +3,12 @@ const express = require('express');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+
+//internal imports
 const { notFoundHandler, defaultErrorHandler } = require('./middlewares/errorHandlers');
+const userRouter = require('./routers/userRouter');
+const categoryRouter = require('./routers/categoryRouter');
+const itemRouter = require('./routers/itemRouter');
 
 //initialse express app
 const app = express();
@@ -21,9 +26,9 @@ app.get('/', (req, res, next) => {
 });
 
 //routers
-//app.use('/api/user/', userRouter); //TODO: need create routers and then enable this router
-//app.use('/api/category/', categoryRouter); //TODO: need create routers and then enable this router
-//app.use('/api/item/', itemRouter); //TODO: need create routers and then enable this router
+app.use('/api/user/', userRouter);
+app.use('/api/category/', categoryRouter);
+app.use('/api/item/', itemRouter);
 
 //Error handlers
 app.all('*', notFoundHandler);
