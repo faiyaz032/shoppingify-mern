@@ -19,6 +19,8 @@ app.use(cookieParser());
 
 //request parser
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(`${__dirname}/public/`));
 
 //root route of the app
 app.get('/', (req, res, next) => {
